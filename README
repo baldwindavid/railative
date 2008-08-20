@@ -110,12 +110,12 @@ produces:
   <option value="5.days">5 days => 2008-08-25 15:37:27</option>
   <option value="1.year">1 year => 2009-08-20 15:37:27</option>  
 
-There are also a number of options to add a prefix and suffix in various parts of this label, as well as specifying and alternate divider symbol between the interval and timestamp.
+There are also a number of options to add a prefix and suffix in various parts of this label, as well as specifying an alternate divider symbol between the interval and timestamp.
 
 
 Example 4: Overriding specific option labels
 ==========================================
-You may have the need to override the label for a specific option.  This is done by simply making that option as an array in the format of [label, interval]
+You may have the need to override the label for a specific option.  This is done by simply making that option an array in the format of [label, interval]
 
 f.select :relative_time, mirrored_time_options(['1.year', ['My Overridden Example!', '5.days'], '1.day', '3.hours', '1.hour, 11.minutes'], :median_time => Time.now, :label_timestamp_format => :db)
 
@@ -158,7 +158,7 @@ produces:
 Example 6: Relative Seconds Example without knowing the depended upon time
 ==========================================================================  
 
-However, depending upon your application you might have the need to create a dependent task without actually knowing the time that you are depending on.  This is easily achieved by not including the :median_time option.  We can't because we don't know what it is.  This will actually return nearly the same options as the last example, except it will need to use estimates for years and months.  Rails assumes 30 days in a month and 365 days in a year.  This method may be sufficient if your application does not require precise year and month intervals and the ability to retrieve time intervals the same way they were initially entered.
+You might have the need to create a dependent task without actually knowing the time that you are depending on.  This is easily achieved by not including the :median_time option.  We can't because we don't know what it is.  This will actually return nearly the same options as the last example, except it will need to use estimates for years and months.  Rails assumes 30 days in a month and 365 days in a year.  This method may be sufficient if your application does not require precise year and month intervals and the ability to retrieve time intervals the same way they were initially entered.
 
 f.select :relative_time, mirrored_time_options([1.year, 5.days, 1.day, ['Overriden Label', 3.hours], 1.hour], :before_suffix => ' before', :after_suffix => ' after')
 
@@ -208,7 +208,7 @@ You can achieve almost any relative timestamp dropdown by specifying additional 
 
 Custom Values
 
-  :value_timestamp_format - The default value for options is a number of seconds relative to a given time. However, you may want the value to be representative of the actual calculated date. In this case, you can specify a to_s format for the timestamp. You can use any of the to_s formats supplied by Rails (:db, :long, :short, :rfc822) or even your own to_s formats.  Note that this option will only work when the supplied array of time intervals are NOT string (i.e. 1.year rather than '1.year')
+  :value_timestamp_format - The default value for options is a number of seconds relative to a given time. However, you may want the value to be representative of the actual calculated date. In this case, you can specify a to_s format for the timestamp. You can use any of the to_s formats supplied by Rails (:db, :long, :short, :rfc822) or even your own to_s formats.  Note that this option will only work when the supplied array of time intervals are NOT strings (i.e. enter 1.year rather than '1.year')
   Examples
     :value_timestamp_format => :db will have values like ‘2008-08-18 13:00′
     :value_timestamp_format => :rfc822
