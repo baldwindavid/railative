@@ -1,9 +1,9 @@
-Railative for Rails >= 2.1
+Railative for Rails >= 2.1 (Rails Plugin)
 ==========================
 
 NOTE:  This documentation will be best understood if read in order.
 
-This library will aid in the entry, storage, display and update of relative time values.  A specific use case for this functionality would be for setting up a task management system with task due dates that can be dependent upon other task due dates.
+This library (Rails Plugin) will aid in the entry, storage, display and update of relative time values.  A specific use case for this functionality would be for setting up a task management system with task due dates that can be dependent upon other task due dates.
 
 The central idea behind this library is to store time intervals as String interval representations (though it has a select field helper that can produce intervals in various formats).  Therefore relative intervals would be stored in the database as '1.year', '-2.months', '4.days, 12.hours', etc.  In doing so, future computations are precise and the natural language intervals stay intact for future updates.
 
