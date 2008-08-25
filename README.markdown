@@ -1,73 +1,71 @@
 Railative for Rails >= 2.1 (Rails Plugin)
-==========================
+=========================================
 
-NOTE:  This documentation will be best understood if read in order.
+*NOTE:  This documentation will be best understood if read in order.*
 
 This library (Rails Plugin) will aid in the entry, storage, display and update of relative time values.  A specific use case for this functionality would be for setting up a task management system with task due dates that can be dependent upon other task due dates.
 
 The central idea behind this library is to store time intervals as String interval representations (though it has a select field helper that can produce intervals in various formats).  Therefore relative intervals would be stored in the database as '1.year', '-2.months', '4.days, 12.hours', etc.  In doing so, future computations are precise and the natural language intervals stay intact for future updates.
 
 
-===================================================
 Time.add_railative_interval
-===================================================
+---------------------------
 
 The library makes it easy to work with these String representations by extending the Time object with the "add_railative_interval" method.  This method computes a new relative Time when passed a String interval representation.  Time.now.add_railative_interval('5.years') would calculate a time object with a year of 2013.  You can also pass negative values such as Time.now.add_railative_interval('-3.days').  You can even pass a list of intervals such as...Time.now.add_railative_interval('2.hours, 30.minutes').  The method will convert the string to an array and add each interval one by one.
 
 Here are a few examples from the console...
 
->> t = Time.now
-=> Wed Aug 20 16:53:10 -0400 2008
+    >> t = Time.now
+    => Wed Aug 20 16:53:10 -0400 2008
 
->> t.add_railative_interval('1.year')
-=> Thu Aug 20 16:53:10 -0400 2009
+    >> t.add_railative_interval('1.year')
+    => Thu Aug 20 16:53:10 -0400 2009
 
->> t.add_railative_interval('-1.year')
-=> Mon Aug 20 16:53:10 -0400 2007
+    >> t.add_railative_interval('-1.year')
+    => Mon Aug 20 16:53:10 -0400 2007
 
->> t.add_railative_interval('2.years, 14.minutes')
-=> Fri Aug 20 17:07:10 -0400 2010
+    >> t.add_railative_interval('2.years, 14.minutes')
+    => Fri Aug 20 17:07:10 -0400 2010
 
->> t.add_railative_interval('-3.months, -11.minutes')
-=> Tue May 20 16:42:10 -0400 2008
+    >> t.add_railative_interval('-3.months, -11.minutes')
+    => Tue May 20 16:42:10 -0400 2008
 
->> t.add_railative_interval('-3.months, -11.minutes').add_railative_interval('3.months, 11.minutes')
-=> Wed Aug 20 16:53:10 -0400 2008
+    >> t.add_railative_interval('-3.months, -11.minutes').add_railative_interval('3.months, 11.minutes')
+    => Wed Aug 20 16:53:10 -0400 2008
 
 So this allows you to make use of an interval representation once it already exists, but how do we make it easy to choose an interval in the first place?  One way is to create a select dropdown with various choices of time intervals before and after a depended upon time (we'll call this the median time).  
 
 
-===================================================
 mirrored_time_options helper
-===================================================
+----------------------------
 
 Railative includes a helper, "mirrored_time_options", to produce this select field and to do it "relatively" easily.  The mirrored_time_options helper takes a list of time intervals, computes those intervals off of a supplied median time, mirrors the intervals to before and after time intervals and formats the values and labels.  
 
-mirrored_time_options(time_intervals = [], options = {})
+    mirrored_time_options(time_intervals = [], options = {})
 
 The helper first takes an array of time intervals.  The recommended format for these intervals would be as a String value ('1.year' rather than 1.year), though other options are discussed below.  A suffix is added to both the "before" and "after" intervals.  The below examples, taken in order, will provide a good overview of the usage of this helper.
 
 
-Example 1: String Time Interval
-================================
+### Example 1: String Time Interval ###
+
 This example is quite simple in that there are no relative time computations.  More advanced examples will follow.
 
-f.select :relative_time, mirrored_time_options(['1.year', '5.days', '1.day', '3.hours', '1.hour'], :median_time => Time.now, :before_suffix => ' before', :after_suffix => ' after')
+    f.select :relative_time, mirrored_time_options(['1.year', '5.days', '1.day', '3.hours', '1.hour'], :median_time => Time.now, :before_suffix => ' before', :after_suffix => ' after')
 
 produces:
-  <option value="-1.year">1 year before</option>
-  <option value="-5.days">5 days before</option>
-  <option value="-1.day">1 day before</option>
-  <option value="-3.hours">3 hours before</option>
-  <option value="-1.hour">1 hour before</option>
-  <option value="0" selected="selected">-- At the same time --</option>
-  <option value="1.hour">1 hour after</option>
-  <option value="3.hours">3 hours after</option>
-  <option value="1.day">1 day after</option>
-  <option value="5.days">5 days after</option>
-  <option value="1.year">1 year after</option>
+    <option value="-1.year">1 year before</option>
+    <option value="-5.days">5 days before</option>
+    <option value="-1.day">1 day before</option>
+    <option value="-3.hours">3 hours before</option>
+    <option value="-1.hour">1 hour before</option>
+    <option value="0" selected="selected">-- At the same time --</option>
+    <option value="1.hour">1 hour after</option>
+    <option value="3.hours">3 hours after</option>
+    <option value="1.day">1 day after</option>
+    <option value="5.days">5 days after</option>
+    <option value="1.year">1 year after</option>
 
-  *Note: The helper actually only produces an array.  When supplied to the select helper it will produce the options HTML
+  ***Note:** The helper actually only produces an array.  When supplied to the select helper it will produce the options HTML*
 
 
   
