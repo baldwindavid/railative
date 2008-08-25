@@ -8,8 +8,8 @@ This library (Rails Plugin) will aid in the entry, storage, display and update o
 The central idea behind this library is to store time intervals as String interval representations (though it has a select field helper that can produce intervals in various formats).  Therefore relative intervals would be stored in the database as '1.year', '-2.months', '4.days, 12.hours', etc.  In doing so, future computations are precise and the natural language intervals stay intact for future updates.
 
 
-Time.add_railative_interval
----------------------------
+`Time.add_railative_interval`
+----------------------------
 
 The library makes it easy to work with these String representations by extending the Time object with the "add_railative_interval" method.  This method computes a new relative Time when passed a String interval representation.  Time.now.add_railative_interval('5.years') would calculate a time object with a year of 2013.  You can also pass negative values such as Time.now.add_railative_interval('-3.days').  You can even pass a list of intervals such as...Time.now.add_railative_interval('2.hours, 30.minutes').  The method will convert the string to an array and add each interval one by one.
 
