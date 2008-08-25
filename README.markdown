@@ -53,6 +53,7 @@ This example is quite simple in that there are no relative time computations.  M
     f.select :relative_time, mirrored_time_options(['1.year', '5.days', '1.day', '3.hours', '1.hour'], :median_time => Time.now, :before_suffix => ' before', :after_suffix => ' after')
 
 produces:
+
     <option value="-1.year">1 year before</option>
     <option value="-5.days">5 days before</option>
     <option value="-1.day">1 day before</option>
