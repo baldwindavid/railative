@@ -54,7 +54,7 @@ This example is quite simple in that there are no relative time computations.  M
 
 produces:
 
-    <option value="-1.year">1 year before</option>
+    <option value="-1.year">1 year before</option> # value is "-1.year"
     <option value="-5.days">5 days before</option>
     <option value="-1.day">1 day before</option>
     <option value="-3.hours">3 hours before</option>
@@ -328,4 +328,4 @@ Examples
     railative_interval_to_db('4.years, 7.minutes', :prepend_negative => true) # outputs: '-4.years, -7.minutes'
     
 
-Copyright (c) 2008 **David Baldwin [http://bilsonrails.wordpress.com](http://bilsonrails.wordpress.com) / [http://www.github.com/bilson](http://www.github.com/bilson)**, released under the MIT license
+Copyright (c) 2008 **David Baldwin [bilsonrails.wordpress.com](http://bilsonrails.wordpress.com) / [github.com/bilson](http://www.github.com/bilson)**, released under the MIT license
