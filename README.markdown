@@ -54,17 +54,17 @@ This example is quite simple in that there are no relative time computations.  M
 
 produces:
 
-    <pre><option value="-1.year">1 year before</option>
-    <option value="-5.days">5 days before</option>
-    <option value="-1.day">1 day before</option>
-    <option value="-3.hours">3 hours before</option>
-    <option value="-1.hour">1 hour before</option>
-    <option value="0" selected="selected">-- At the same time --</option>
-    <option value="1.hour">1 hour after</option>
-    <option value="3.hours">3 hours after</option>
-    <option value="1.day">1 day after</option>
-    <option value="5.days">5 days after</option>
-    <option value="1.year">1 year after</option></pre>
+    option value="-1.year">1 year before</option
+    option value="-5.days">5 days before</option
+    option value="-1.day">1 day before</option
+    option value="-3.hours">3 hours before</option
+    option value="-1.hour">1 hour before</option
+    option value="0" selected="selected">-- At the same time --</option
+    option value="1.hour">1 hour after</option
+    option value="3.hours">3 hours after</option
+    option value="1.day">1 day after</option
+    option value="5.days">5 days after</option
+    option value="1.year">1 year after</option
 
 ***Note:** The helper actually only produces an array.  When supplied to the select helper it will produce the options HTML*
 
