@@ -1,7 +1,7 @@
 Railative for Rails >= 2.1 (Rails Plugin)
 =========================================
 
-*NOTE:  This documentation will be best understood if read in order.*
+***NOTE:  This documentation will be best understood if read in order.***
 
 This library (Rails Plugin) will aid in the entry, storage, display and update of relative time values.  A specific use case for this functionality would be for setting up a task management system with task due dates that can be dependent upon other task due dates.
 
@@ -72,7 +72,7 @@ produces:
   
 ### Example 2: String Time Interval with timestamp label ###
 
-The helper allows great flexibility in label display.  By simply including the `:label_timestamp_format` option, you can specify a `Time.to_s` format that will automatically display the computed timestamp rather than a time interval.  The example below uses the **:db** format, but you could specify **:long**, **:short**, **rfc822** or even your own custom format.
+The helper allows great flexibility in label display.  By simply including the **:label\_timestamp\_format** option, you can specify a `Time.to_s` format that will automatically display the computed timestamp rather than a time interval.  The example below uses the **:db** format, but you could specify **:long**, **:short**, **rfc822** or even your own custom format.
 
     =f.select :relative_time, mirrored_time_options(['1.year', '5.days', '1.day', '3.hours', '1.hour'], :median_time => Time.now, :label_timestamp_format => :db)
 
@@ -94,7 +94,7 @@ produces:
 Example 3: String Time Interval with interval and timestamp label
 -----------------------------------------------------------------
 
-Taking this a step further, you can also include the `:interval_and_timestamp_label` to automatically display both the interval and timestamp relative labels.
+Taking this a step further, you can also include the **:interval\_and\_timestamp\_label** to automatically display both the interval and timestamp relative labels.
 
     =f.select :relative_time, mirrored_time_options(['1.year', '5.days', '1.day', '3.hours', '1.hour'], :median_time => Time.now, :label_timestamp_format => :db, :interval_and_timestamp_label => true)
 
@@ -136,7 +136,7 @@ produces:
     <option value="5.days">My Overridden Example!</option>
     <option value="1.year">2009-08-20 15:51:05</option>
   
-Also note that in this example we have specified a two part interval `"1.hour, 11.minutes"`.  The helper will factor in both values when computing the label's timestamp.
+Also note that in this example we have specified a two part interval..."1.hour, 11.minutes".  The helper will factor in both values when computing the label's timestamp.
   
   
 Example 5: Relative Seconds Example with median time
@@ -163,7 +163,7 @@ produces:
 Example 6: Relative Seconds Example without knowing the depended upon time
 --------------------------------------------------------------------------
 
-You might have the need to create a dependent task without actually knowing the time that you are depending on.  This is easily achieved by not including the `:median_time` option.  We can't because we don't know what it is.  This will actually return nearly the same options as the last example, except it will need to use estimates for years and months.  Rails assumes 30 days in a month and 365 days in a year.  This method may be sufficient if your application does not require precise year and month intervals and the ability to retrieve time intervals the same way they were initially entered.
+You might have the need to create a dependent task without actually knowing the time that you are depending on.  This is easily achieved by not including the **:median\_time** option.  We can't because we don't know what it is.  This will actually return nearly the same options as the last example, except it will need to use estimates for years and months.  Rails assumes 30 days in a month and 365 days in a year.  This method may be sufficient if your application does not require precise year and month intervals and the ability to retrieve time intervals the same way they were initially entered.
 
     f.select :relative_time, mirrored_time_options([1.year, 5.days, 1.day, ['Overriden Label', 3.hours], 1.hour], :before_suffix => ' before', :after_suffix => ' after')
 
@@ -185,7 +185,7 @@ produces:
 Example 7: Timestamp Example
 ----------------------------
 
-The helper can also set the value of the options to a specified timestamp representation rather than a railative string or seconds.  Simply supply the `:value_timestamp_format` option with a to\_s format.  The same formats (**:db**, **:rfc822**, **:short**, **:long**, custom formats) available to the label are also available for the value portion of the option.  Please note that the array of time intervals supplied to the helper must NOT be string representations to use this functionality.  Also, of course, a median time object must be supplied.
+The helper can also set the value of the options to a specified timestamp representation rather than a railative string or seconds.  Simply supply the **:value\_timestamp\_format** option with a to\_s format.  The same formats (**:db**, **:rfc822**, **:short**, **:long**, custom formats) available to the label are also available for the value portion of the option.  Please note that the array of time intervals supplied to the helper must NOT be string representations to use this functionality.  Also, of course, a median time object must be supplied.
 
     f.select :relative_seconds, mirrored_time_options([1.year, 5.days, 1.day, ['Overriden Label', 3.hours], 1.hour], :before_suffix => ' before', :after_suffix => ' after', :value_timestamp_format => :db, :median_time => Time.now)
 
@@ -227,34 +227,34 @@ Examples
 
 #### Custom Labels ####
 
-**`:before_prefix`** - add a prefix to all “before” option labels
+**:before\_prefix** - add a prefix to all “before” option labels
 
 Example: `:before_prefix => ‘About ‘`
 
 
-**`:before_suffix`** - add a suffix to all “before” option labels
+**:before\_suffix** - add a suffix to all “before” option labels
     
 Example: `:before_suffix => ‘ before’`
 
 
-**`:after_prefix`** - add a prefix to all “after" option labels
+**:after\_prefix** - add a prefix to all “after" option labels
 
 Example: `:after_prefix => ‘Sometime ‘`
 
 
-**`:after_suffix`** - add a suffix to all “after” option labels
+**:after\_suffix** - add a suffix to all “after” option labels
 
 Example: `:after_suffix => ‘ after’`
 
 
-**`:median_time_label`** - change the label for the depended upon time (Default is “– At the same time –”)
+**:median\_time\_label** - change the label for the depended upon time (Default is “– At the same time –”)
     
 Examples
       
     :median_time_label => ‘Same time as other task’
     :median_time_label => 'You have reached the center!'
 
-**`:label_timestamp_format`** - Your labels can automatically show the calculated timestamp rather than the amount of time difference. This will only work if **:center** is a Time object.  You can specify a to\_s format that the label will use to display the time.  Otherwise it will default to the **:long** format. 
+**:label\_timestamp\_format** - Your labels can automatically show the calculated timestamp rather than the amount of time difference. This will only work if **:center** is a Time object.  You can specify a to\_s format that the label will use to display the time.  Otherwise it will default to the **:long** format. 
     
 Examples
       
@@ -262,25 +262,25 @@ Examples
     :label_timestamp_format => :my_awesome_to_s_format
     :label_timestamp_format => :rfc822
       
-**`:interval_and_timestamp_label`** - Specifying this option as true will result in the label including both a time interval and timestamp for each option.  
+**:interval\_and\_timestamp\_label** - Specifying this option as true will result in the label including both a time interval and timestamp for each option.  
       
 Example: `:interval_and_timestamp_label => true produces labels such as "3 hours => 2008-08-20 13:30:44"`
   
 If using the `interval_and_timestamp_label`, you will also be able to format the label with the following additional options:
   
-**`:interval_and_timestamp_label_divider`** - This is the text that will be used to divide the interval and timestamp in the label.  The default text is ' => '
+**:interval\_and\_timestamp\_label\_divider** - This is the text that will be used to divide the interval and timestamp in the label.  The default text is ' => '
       
 Example
 
     :interval_and_timestamp_label_divider => ' @ ' produces labels such as "3 hours @ 2008-08-20 13:30:44"
       
       
-**`:before_interval_suffix`** - Adds a suffix to the time interval portion of the before options
+**:before\_interval\_suffix** - Adds a suffix to the time interval portion of the before options
 
 Example: `:before_interval_suffix => ' before' produces labels such as "3 hours before => 2008-08-20` 13:30:44"
      
       
-**`:after_interval_suffix`** - Adds a suffix to the time interval portion of the after options
+**:after\_interval\_suffix** - Adds a suffix to the time interval portion of the after options
       
 Example: `:after_interval_suffix => ' after' produces labels such as "3 hours after => 2008-08-20 13:30:44"`
 
@@ -289,11 +289,11 @@ Example: `:after_interval_suffix => ' after' produces labels such as "3 hours af
 
 You can also specify to hide the before, median or after options with these options…
 
-**`:display_before_options`** => boolean
+**:display\_before\_options** => boolean
 
-**`:display_median_time_options`** => boolean
+**:display\_median\_time\_options** => boolean
 
-**`:display_after_options`** => boolean
+**:display\_after\_options** => boolean
 
 Example: `:display_after_options => false would return options for only times before and and the median time`
 
@@ -328,4 +328,4 @@ Examples
     railative_interval_to_db('4.years, 7.minutes', :prepend_negative => true) # outputs: '-4.years, -7.minutes'
     
 
-Copyright (c) 2008 **David Baldwin (<bilsonrails.wordpress.com> / <github.com/bilson>)**, released under the MIT license
+Copyright (c) 2008 **David Baldwin (<http://bilsonrails.wordpress.com> / <http://www.github.com/bilson>)**, released under the MIT license
