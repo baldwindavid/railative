@@ -223,41 +223,43 @@ You can achieve almost any relative timestamp dropdown by specifying additional 
 
 #### Custom Labels ####
 
-  **:before_prefix** - add a prefix to all “before” option labels
-    Example: :before_prefix => ‘About ‘
+-  **:before_prefix** - add a prefix to all “before” option labels
 
-  **:before_suffix** - add a suffix to all “before” option labels
-    Example: :before_suffix => ‘ before’
+  - Example: :before_prefix => ‘About ‘
 
-  **:after_prefix** - add a prefix to all “after" option labels
+-  **:before_suffix** - add a suffix to all “before” option labels
+    
+  - Example: :before_suffix => ‘ before’
+
+-  **:after_prefix** - add a prefix to all “after" option labels
     Example: :after_prefix => ‘Sometime ‘
 
-  **:after_suffix** - add a suffix to all “after” option labels
+-  **:after_suffix** - add a suffix to all “after” option labels
     Example: :after_suffix => ‘ after’
 
-  **:median_time_label** - change the label for the depended upon time (Default is “– At the same time –”)
+-  **:median\_time\_label** - change the label for the depended upon time (Default is “– At the same time –”)
     Examples
       :median_time_label => ‘Same time as other task’
       :median_time_label => 'You have reached the center!'
 
-  **:label_timestamp_format** - Your labels can automatically show the calculated timestamp rather than the amount of time difference. This will only work if :center is a Time object.  You can specify a to_s format that the label will use to display the time.  Otherwise it will default to the :long format. 
+-  **:label\_timestamp\_format** - Your labels can automatically show the calculated timestamp rather than the amount of time difference. This will only work if :center is a Time object.  You can specify a to_s format that the label will use to display the time.  Otherwise it will default to the :long format. 
     Examples
       :label_timestamp_format => :db
       :label_timestamp_format => :my_awesome_to_s_format
       :label_timestamp_format => :rfc822
       
-  **:interval_and_timestamp_label** - Specifying this option as true will result in the label including both a time interval and timestamp for each option.  
-    Example
-      :interval_and_timestamp_label => true produces labels such as "3 hours => 2008-08-20 13:30:44"
+-  **:interval\_and\_timestamp_label** - Specifying this option as true will result in the label including both a time interval and timestamp for each option.  
+      
+    :interval\_and\_timestamp_label => true produces labels such as "3 hours => 2008-08-20 13:30:44"
   If using the interval_and_timestamp_label, you will also be able to format the label with the following additional options:
   
-    **:interval_and_timestamp_label_divider** - This is the text that will be used to divide the interval and timestamp in the label.  The default text is ' => '
+    **:interval\_and\_timestamp_label_divider** - This is the text that will be used to divide the interval and timestamp in the label.  The default text is ' => '
       Example
-        :interval_and_timestamp_label_divider => ' @ ' produces labels such as "3 hours @ 2008-08-20 13:30:44"
+        :interval\_and\_timestamp\_label\_divider => ' @ ' produces labels such as "3 hours @ 2008-08-20 13:30:44"
       
-    **:before_interval_suffix** - Adds a suffix to the time interval portion of the before options
+    **:before\_interval\_suffix** - Adds a suffix to the time interval portion of the before options
       Example
-        :before_interval_suffix => ' before' produces labels such as "3 hours before => 2008-08-20 13:30:44"
+        :before\_interval\_suffix => ' before' produces labels such as "3 hours before => 2008-08-20 13:30:44"
       
     **:after_interval_suffix** - Adds a suffix to the time interval portion of the after options
       Example
