@@ -328,4 +328,4 @@ Examples
     railative_interval_to_db('4.years, 7.minutes', :prepend_negative => true) # outputs: '-4.years, -7.minutes'
     
 
-Copyright (c) 2008 **David Baldwin (<http://bilsonrails.wordpress.com> / <http://www.github.com/bilson>)**, released under the MIT license
+Copyright (c) 2008 **David Baldwin ( <http://bilsonrails.wordpress.com> / <http://www.github.com/bilson> )**, released under the MIT license
