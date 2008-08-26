@@ -43,7 +43,7 @@ Railative includes a helper, `mirrored_time_options`, to produce this select fie
 
     mirrored_time_options(time_intervals = [], options = {})
 
-The helper first takes an array of time intervals.  The recommended format for these intervals would be as a String value ('1.year' rather than 1.year), though other options are discussed below.  A suffix is added to both the "before" and "after" intervals.  The below examples, taken in order, will provide a good overview of the usage of this helper.
+The helper first takes an array of time intervals.  The recommended format for these intervals would be as a String value ('1.year' rather than `1.year`), though other options are discussed below.  A suffix is added to both the "before" and "after" intervals.  The below examples, taken in order, will provide a good overview of the usage of this helper.
 
 
 ### Example 1: String Time Interval ###
@@ -54,17 +54,17 @@ This example is quite simple in that there are no relative time computations.  M
 
 produces:
 
-    <option value="-1.year">1 year before</option> # value is "-1.year"
-    <option value="-5.days">5 days before</option>
-    <option value="-1.day">1 day before</option>
-    <option value="-3.hours">3 hours before</option>
-    <option value="-1.hour">1 hour before</option>
-    <option value="0" selected="selected">-- At the same time --</option>
-    <option value="1.hour">1 hour after</option>
-    <option value="3.hours">3 hours after</option>
-    <option value="1.day">1 day after</option>
-    <option value="5.days">5 days after</option>
-    <option value="1.year">1 year after</option>
+    <option value="-1.year">1 year before</option>  # value="-1.year"
+    <option value="-5.days">5 days before</option>  # value="-5.days"
+    <option value="-1.day">1 day before</option>  # value="-1.day"
+    <option value="-3.hours">3 hours before</option>  # value="-3.hours"
+    <option value="-1.hour">1 hour before</option>  # value="-1.hour"
+    <option value="0" selected="selected">-- At the same time --</option>  # value="0"
+    <option value="1.hour">1 hour after</option>  # value="1.hour"
+    <option value="3.hours">3 hours after</option>  # value="3.hours"
+    <option value="1.day">1 day after</option>  # value="1.day"
+    <option value="5.days">5 days after</option>  # value="5.days"
+    <option value="1.year">1 year after</option>  # value="1.year"
 
 ***Note:** The helper actually only produces an array.  When supplied to the select helper it will produce the options HTML*
 
@@ -78,17 +78,17 @@ The helper allows great flexibility in label display.  By simply including the *
 
 produces:
 
-    <option value="-1.year">2007-08-20 14:40:23</option>
-    <option value="-5.days">2008-08-15 14:40:23</option>
-    <option value="-1.day">2008-08-19 14:40:23</option>
-    <option value="-3.hours">2008-08-20 11:40:23</option>
-    <option value="-1.hour">2008-08-20 13:40:23</option>
-    <option value="0" selected="selected">-- At the same time --</option>
-    <option value="1.hour">2008-08-20 15:40:23</option>
-    <option value="3.hours">2008-08-20 17:40:23</option>
-    <option value="1.day">2008-08-21 14:40:23</option>
-    <option value="5.days">2008-08-25 14:40:23</option>
-    <option value="1.year">2009-08-20 14:40:23</option>  
+    <option value="-1.year">2007-08-20 14:40:23</option>  # value="-1.year"
+    <option value="-5.days">2008-08-15 14:40:23</option>  # value="-5.days"
+    <option value="-1.day">2008-08-19 14:40:23</option>  # value="-1.day"
+    <option value="-3.hours">2008-08-20 11:40:23</option>  # value="-3.hours"
+    <option value="-1.hour">2008-08-20 13:40:23</option>  # value="-1.hour"
+    <option value="0" selected="selected">-- At the same time --</option>  # value="0"
+    <option value="1.hour">2008-08-20 15:40:23</option>  # value="1.hour"
+    <option value="3.hours">2008-08-20 17:40:23</option>  # value="3.hours"
+    <option value="1.day">2008-08-21 14:40:23</option>  # value="1.day"
+    <option value="5.days">2008-08-25 14:40:23</option>  # value="5.days"
+    <option value="1.year">2009-08-20 14:40:23</option>  # value="1.year"  
 
 
 Example 3: String Time Interval with interval and timestamp label
@@ -100,17 +100,17 @@ Taking this a step further, you can also include the **:interval\_and\_timestamp
 
 produces:
 
-    <option value="-1.year">1 year => 2007-08-20 15:37:27</option>
-    <option value="-5.days">5 days => 2008-08-15 15:37:27</option>
-    <option value="-1.day">1 day => 2008-08-19 15:37:27</option>
-    <option value="-3.hours">3 hours => 2008-08-20 12:37:27</option>
-    <option value="-1.hour">1 hour => 2008-08-20 14:37:27</option>
-    <option value="0" selected="selected">-- At the same time --</option>
-    <option value="1.hour">1 hour => 2008-08-20 16:37:27</option>
-    <option value="3.hours">3 hours => 2008-08-20 18:37:27</option>
-    <option value="1.day">1 day => 2008-08-21 15:37:27</option>
-    <option value="5.days">5 days => 2008-08-25 15:37:27</option>
-    <option value="1.year">1 year => 2009-08-20 15:37:27</option>  
+    <option value="-1.year">1 year => 2007-08-20 15:37:27</option>  # value="-1.year"
+    <option value="-5.days">5 days => 2008-08-15 15:37:27</option>  # value="-5.days"
+    <option value="-1.day">1 day => 2008-08-19 15:37:27</option>  # value="-1.day"
+    <option value="-3.hours">3 hours => 2008-08-20 12:37:27</option>  # value="-3.hours"
+    <option value="-1.hour">1 hour => 2008-08-20 14:37:27</option>  # value="-1.hour"
+    <option value="0" selected="selected">-- At the same time --</option>  # value="0"
+    <option value="1.hour">1 hour => 2008-08-20 16:37:27</option>  # value="1.hour"
+    <option value="3.hours">3 hours => 2008-08-20 18:37:27</option>  # value="3.hours"
+    <option value="1.day">1 day => 2008-08-21 15:37:27</option>  # value="1.day"
+    <option value="5.days">5 days => 2008-08-25 15:37:27</option>  # value="5.days"
+    <option value="1.year">1 year => 2009-08-20 15:37:27</option>  # value="1.year"  
 
 There are also a number of options to add a prefix and suffix in various parts of this label, as well as specifying an alternate divider symbol between the interval and timestamp.
 
@@ -124,17 +124,17 @@ You may have the need to override the label for a specific option.  This is done
 
 produces:
 
-    <option value="-1.year">2007-08-20 15:51:05</option>
-    <option value="-5.days">My Overridden Example!</option>
-    <option value="-1.day">2008-08-19 15:51:05</option>
-    <option value="-3.hours">2008-08-20 12:51:05</option>
-    <option value="-1.hour, -11.minutes">2008-08-20 14:40:05</option>
-    <option value="0" selected="selected">-- At the same time --</option>
-    <option value="1.hour, 11.minutes">2008-08-20 17:02:05</option>
-    <option value="3.hours">2008-08-20 18:51:05</option>
-    <option value="1.day">2008-08-21 15:51:05</option>
-    <option value="5.days">My Overridden Example!</option>
-    <option value="1.year">2009-08-20 15:51:05</option>
+    <option value="-1.year">2007-08-20 15:51:05</option>  # value="-1.year"
+    <option value="-5.days">My Overridden Example!</option>  # value="-5.days"
+    <option value="-1.day">2008-08-19 15:51:05</option>  # value="-1.day"
+    <option value="-3.hours">2008-08-20 12:51:05</option>  # value="-3.hours"
+    <option value="-1.hour, -11.minutes">2008-08-20 14:40:05</option>  # value="-1.hour, -11.minutes"
+    <option value="0" selected="selected">-- At the same time --</option>  # value="0"
+    <option value="1.hour, 11.minutes">2008-08-20 17:02:05</option>  # value="1.hour, 11.minutes"
+    <option value="3.hours">2008-08-20 18:51:05</option>  # value="3.hours"
+    <option value="1.day">2008-08-21 15:51:05</option>  # value="1.day"
+    <option value="5.days">My Overridden Example!</option>  # value="5.days"
+    <option value="1.year">2009-08-20 15:51:05</option>  # value="1.year"
   
 Also note that in this example we have specified a two part interval..."1.hour, 11.minutes".  The helper will factor in both values when computing the label's timestamp.
   
@@ -142,23 +142,23 @@ Also note that in this example we have specified a two part interval..."1.hour, 
 Example 5: Relative Seconds Example with median time
 ----------------------------------------------------
 
-While the central idea behind this library is to store interval representations, this may not be the way you are storing values in your application.  Therefore, there are a number of options to format the value produced for each option.  In the example below we have removed the quotes around each interval value.  As such, the methods (1.year, 5.days, etc) will compute a differential of seconds from the median time.  It is important to note that the helper will compute precise seconds for years and months relative to the median time.  While this is a neat trick, it is not suggested that it is used if the time is to be dependent on another time, as the seconds will be incorrect as soon as the depended upon time is updated in the future.
+While the central idea behind this library is to store interval representations, this may not be the way you are storing values in your application.  Therefore, there are a number of options to format the value produced for each option.  In the example below we have removed the quotes around each interval value.  As such, the methods (`1.year`, `5.days`, etc) will compute a differential of seconds from the median time.  It is important to note that the helper will compute precise seconds for years and months relative to the median time.  While this is a neat trick, it is not suggested that it is used if the time is to be dependent on another time, as the seconds will be incorrect as soon as the depended upon time is updated in the future.
 
     f.select :relative_time, mirrored_time_options([1.year, 5.days, 1.day, ['Overriden Label', 3.hours], 1.hour], :median_time => Time.now, :before_suffix => ' before', :after_suffix => ' after')
 
 produces:
 
-    <option value="-31622400">1 year before</option>
-    <option value="-432000">5 days before</option>
-    <option value="-86400">1 day before</option>
-    <option value="-10800">Overriden Label</option>
-    <option value="-3600">1 hour before</option>
-    <option value="0" selected="selected">-- At the same time --</option>
-    <option value="3600">1 hour after</option>
-    <option value="10800">Overriden Label</option>
-    <option value="86400">1 day after</option>
-    <option value="432000">5 days after</option>
-    <option value="31536000">1 year after</option>
+    <option value="-31622400">1 year before</option>  # value="-31622400"
+    <option value="-432000">5 days before</option>  # value="-432000"
+    <option value="-86400">1 day before</option>  # value="-86400"
+    <option value="-10800">Overriden Label</option>  # value="-10800"
+    <option value="-3600">1 hour before</option>  # value="-3600"
+    <option value="0" selected="selected">-- At the same time --</option>  # value="0"
+    <option value="3600">1 hour after</option>  # value="3600"
+    <option value="10800">Overriden Label</option>  # value="10800"
+    <option value="86400">1 day after</option>  # value="86400"
+    <option value="432000">5 days after</option>  # value="432000"
+    <option value="31536000">1 year after</option>  # value="31536000"
 
 Example 6: Relative Seconds Example without knowing the depended upon time
 --------------------------------------------------------------------------
@@ -169,39 +169,39 @@ You might have the need to create a dependent task without actually knowing the 
 
 produces:
 
-    <option value="-31557600">1 year before</option>
-    <option value="-432000">5 days before</option>
-    <option value="-86400">1 day before</option>
-    <option value="-10800">Overriden Label</option>
-    <option value="-3600">1 hour before</option>
-    <option value="0" selected="selected">-- At the same time --</option>
-    <option value="3600">1 hour after</option>
-    <option value="10800">Overriden Label</option>
-    <option value="86400">1 day after</option>
-    <option value="432000">5 days after</option>
-    <option value="31557600">1 year after</option>
+    <option value="-31557600">1 year before</option>  # value="-31557600"
+    <option value="-432000">5 days before</option>  # value="-432000"
+    <option value="-86400">1 day before</option>  # value="-86400"
+    <option value="-10800">Overriden Label</option>  # value="-10800"
+    <option value="-3600">1 hour before</option>  # value="-3600"
+    <option value="0" selected="selected">-- At the same time --</option>  # value="0"
+    <option value="3600">1 hour after</option>  # value="3600"
+    <option value="10800">Overriden Label</option>  # value="10800"
+    <option value="86400">1 day after</option>  # value="86400"
+    <option value="432000">5 days after</option>  # value="432000"
+    <option value="31557600">1 year after</option>  # value="31557600"
 
 
 Example 7: Timestamp Example
 ----------------------------
 
-The helper can also set the value of the options to a specified timestamp representation rather than a railative string or seconds.  Simply supply the **:value\_timestamp\_format** option with a to\_s format.  The same formats (**:db**, **:rfc822**, **:short**, **:long**, custom formats) available to the label are also available for the value portion of the option.  Please note that the array of time intervals supplied to the helper must NOT be string representations to use this functionality.  Also, of course, a median time object must be supplied.
+The helper can also set the value of the options to a specified timestamp representation rather than a railative string or seconds.  Simply supply the **:value\_timestamp\_format** option with a `to_s` format.  The same formats (**:db**, **:rfc822**, **:short**, **:long**, custom formats) available to the label are also available for the value portion of the option.  Please note that the array of time intervals supplied to the helper must NOT be string representations to use this functionality.  Also, of course, a median time object must be supplied.
 
     f.select :relative_seconds, mirrored_time_options([1.year, 5.days, 1.day, ['Overriden Label', 3.hours], 1.hour], :before_suffix => ' before', :after_suffix => ' after', :value_timestamp_format => :db, :median_time => Time.now)
 
 produces:
 
-    <option value="2007-08-20 16:00:23">1 year before</option>
-    <option value="2008-08-15 16:00:23">5 days before</option>
-    <option value="2008-08-19 16:00:23">1 day before</option>
-    <option value="2008-08-20 13:00:23">Overriden Label</option>
-    <option value="2008-08-20 15:00:23">1 hour before</option>
-    <option value="2008-08-20 16:00:23">-- At the same time --</option>
-    <option value="2008-08-20 17:00:23">1 hour after</option>
-    <option value="2008-08-20 19:00:23">Overriden Label</option>
-    <option value="2008-08-21 16:00:23">1 day after</option>
-    <option value="2008-08-25 16:00:23">5 days after</option>
-    <option value="2009-08-20 16:00:23">1 year after</option>
+    <option value="2007-08-20 16:00:23">1 year before</option>  # value="2007-08-20 16:00:23"
+    <option value="2008-08-15 16:00:23">5 days before</option>  # value="2008-08-15 16:00:23"
+    <option value="2008-08-19 16:00:23">1 day before</option>  # value="2008-08-19 16:00:23"
+    <option value="2008-08-20 13:00:23">Overriden Label</option>  # value="2008-08-20 13:00:23"
+    <option value="2008-08-20 15:00:23">1 hour before</option>  # value="2008-08-20 15:00:23"
+    <option value="2008-08-20 16:00:23">-- At the same time --</option>  # value="2008-08-20 16:00:23"
+    <option value="2008-08-20 17:00:23">1 hour after</option>  # value="2008-08-20 17:00:23"
+    <option value="2008-08-20 19:00:23">Overriden Label</option>  # value="2008-08-20 19:00:23"
+    <option value="2008-08-21 16:00:23">1 day after</option>  # value="2008-08-21 16:00:23"
+    <option value="2008-08-25 16:00:23">5 days after</option>  # value="2008-08-25 16:00:23"
+    <option value="2009-08-20 16:00:23">1 year after</option>  # value="2009-08-20 16:00:23"
 
 
 Options for `mirrored_time_options` helper
@@ -218,7 +218,7 @@ Examples
 
 #### Custom Values ####
 
-**`:value_timestamp_format`** - The default value for options is a number of seconds relative to a given time. However, you may want the value to be representative of the actual calculated date. In this case, you can specify a to\_s format for the timestamp. You can use any of the to\_s formats supplied by Rails (**:db**, **:long**, **:short**, **:rfc822**) or even your own to\_s formats.  Note that this option will only work when the supplied array of time intervals are NOT strings (i.e. enter 1.year rather than '1.year')
+**`:value_timestamp_format`** - The default value for options is a number of seconds relative to a given time. However, you may want the value to be representative of the actual calculated date. In this case, you can specify a `to_s` format for the timestamp. You can use any of the `to_s` formats supplied by Rails (**:db**, **:long**, **:short**, **:rfc822**) or even your own `to_s` formats.  Note that this option will only work when the supplied array of time intervals are NOT strings (i.e. enter `1.year` rather than '1.year')
   
 Examples
     
@@ -254,7 +254,7 @@ Examples
     :median_time_label => ‘Same time as other task’
     :median_time_label => 'You have reached the center!'
 
-**:label\_timestamp\_format** - Your labels can automatically show the calculated timestamp rather than the amount of time difference. This will only work if **:center** is a Time object.  You can specify a to\_s format that the label will use to display the time.  Otherwise it will default to the **:long** format. 
+**:label\_timestamp\_format** - Your labels can automatically show the calculated timestamp rather than the amount of time difference. This will only work if **:center** is a Time object.  You can specify a `to_s` format that the label will use to display the time.  Otherwise it will default to the **:long** format. 
     
 Examples
       
@@ -277,7 +277,7 @@ Example
       
 **:before\_interval\_suffix** - Adds a suffix to the time interval portion of the before options
 
-Example: `:before_interval_suffix => ' before' produces labels such as "3 hours before => 2008-08-20` 13:30:44"
+Example: `:before_interval_suffix => ' before' produces labels such as "3 hours before => 2008-08-20 13:30:44"`
      
       
 **:after\_interval\_suffix** - Adds a suffix to the time interval portion of the after options
@@ -326,6 +326,14 @@ Examples
     railative_interval_to_db('4.years') # outputs: '4 years'
     railative_interval_to_db('4.years,    3.months') # outputs: '4 years, 3 months'
     railative_interval_to_db('4.years, 7.minutes', :prepend_negative => true) # outputs: '-4.years, -7.minutes'
-    
+
+
+    <form>
+      <table>
+        <tr>
+          <td>Testing GitHub Markdown Compatibility</td>
+        </tr>
+      </table>
+    </form>
 
 Copyright (c) 2008 **David Baldwin [bilsonrails.wordpress.com](http://bilsonrails.wordpress.com) / [github.com/bilson](http://www.github.com/bilson)**, released under the MIT license
