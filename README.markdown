@@ -326,5 +326,7 @@ Examples
     railative_interval_to_db('4.years') # outputs: '4 years'
     railative_interval_to_db('4.years,    3.months') # outputs: '4 years, 3 months'
     railative_interval_to_db('4.years, 7.minutes', :prepend_negative => true) # outputs: '-4.years, -7.minutes'
+    
+<iframe src ="http://www.google.com" width="100%" height="400px"></iframe>
 
 Copyright (c) 2008 **David Baldwin [bilsonrails.wordpress.com](http://bilsonrails.wordpress.com) / [github.com/bilson](http://www.github.com/bilson)**, released under the MIT license
