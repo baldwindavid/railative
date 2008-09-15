@@ -8,14 +8,14 @@ This library (Rails Plugin) will aid in the entry, storage, display and update o
 The central idea behind this library is to store time intervals as String interval representations (though it has a select field helper that can produce intervals in various formats).  Therefore relative intervals would be stored in the database as '1.year', '-2.months', '4.days, 12.hours', etc.  In doing so, future computations are precise and the natural language intervals stay intact for future updates.
 
 
-`Time.add_railative_interval`
+`ActiveSupport::TimeWithZone.add_railative_interval`
 ----------------------------
 
-The library makes it easy to work with these String representations by extending the Time object with the `add_railative_interval` method.  This method computes a new relative Time when passed a String interval representation.  `Time.now.add_railative_interval('5.years')` would calculate a time object with a year of 2013.  You can also pass negative values such as `Time.now.add_railative_interval('-3.days')`.  You can even pass a list of intervals such as...`Time.now.add_railative_interval('2.hours, 30.minutes')`.  The method will convert the string to an array and add each interval one by one.
+The library makes it easy to work with these String representations by extending the ActiveSupport::TimeWithZone object with the `add_railative_interval` method.  This method computes a new relative Time when passed a String interval representation.  `Time.zone.now.add_railative_interval('5.years')` would calculate a time object with a year of 2013.  You can also pass negative values such as `Time.zone.now.add_railative_interval('-3.days')`.  You can even pass a list of intervals such as...`Time.zone.now.add_railative_interval('2.hours, 30.minutes')`.  The method will convert the string to an array and add each interval one by one.
 
 Here are a few examples from the console...
 
-    >> t = Time.now
+    >> t = Time.zone.now
     => Wed Aug 20 16:53:10 -0400 2008
 
     >> t.add_railative_interval('1.year')
@@ -50,7 +50,7 @@ The helper first takes an array of time intervals.  The recommended format for t
 
 This example is quite simple in that there are no relative time computations.  More advanced examples will follow.
 
-    f.select :relative_time, mirrored_time_options(['1.year', '5.days', '1.day', '3.hours', '1.hour'], :median_time => Time.now, :before_suffix => ' before', :after_suffix => ' after')
+    f.select :relative_time, mirrored_time_options(['1.year', '5.days', '1.day', '3.hours', '1.hour'], :median_time => Time.zone.now, :before_suffix => ' before', :after_suffix => ' after')
 
 produces:
 
@@ -74,7 +74,7 @@ produces:
 
 The helper allows great flexibility in label display.  By simply including the **:label\_timestamp\_format** option, you can specify a `Time.to_s` format that will automatically display the computed timestamp rather than a time interval.  The example below uses the **:db** format, but you could specify **:long**, **:short**, **rfc822** or even your own custom format.
 
-    =f.select :relative_time, mirrored_time_options(['1.year', '5.days', '1.day', '3.hours', '1.hour'], :median_time => Time.now, :label_timestamp_format => :db)
+    =f.select :relative_time, mirrored_time_options(['1.year', '5.days', '1.day', '3.hours', '1.hour'], :median_time => Time.zone.now, :label_timestamp_format => :db)
 
 produces:
 
@@ -96,7 +96,7 @@ Example 3: String Time Interval with interval and timestamp label
 
 Taking this a step further, you can also include the **:interval\_and\_timestamp\_label** to automatically display both the interval and timestamp relative labels.
 
-    =f.select :relative_time, mirrored_time_options(['1.year', '5.days', '1.day', '3.hours', '1.hour'], :median_time => Time.now, :label_timestamp_format => :db, :interval_and_timestamp_label => true)
+    =f.select :relative_time, mirrored_time_options(['1.year', '5.days', '1.day', '3.hours', '1.hour'], :median_time => Time.zone.now, :label_timestamp_format => :db, :interval_and_timestamp_label => true)
 
 produces:
 
@@ -120,7 +120,7 @@ Example 4: Overriding specific option labels
 
 You may have the need to override the label for a specific option.  This is done by simply making that option an array in the format of [**label**, **interval**]
 
-    f.select :relative_time, mirrored_time_options(['1.year', ['My Overridden Example!', '5.days'], '1.day', '3.hours', '1.hour, 11.minutes'], :median_time => Time.now, :label_timestamp_format => :db)
+    f.select :relative_time, mirrored_time_options(['1.year', ['My Overridden Example!', '5.days'], '1.day', '3.hours', '1.hour, 11.minutes'], :median_time => Time.zone.now, :label_timestamp_format => :db)
 
 produces:
 
@@ -144,7 +144,7 @@ Example 5: Relative Seconds Example with median time
 
 While the central idea behind this library is to store interval representations, this may not be the way you are storing values in your application.  Therefore, there are a number of options to format the value produced for each option.  In the example below we have removed the quotes around each interval value.  As such, the methods (`1.year`, `5.days`, etc) will compute a differential of seconds from the median time.  It is important to note that the helper will compute precise seconds for years and months relative to the median time.  While this is a neat trick, it is not suggested that it is used if the time is to be dependent on another time, as the seconds will be incorrect as soon as the depended upon time is updated in the future.
 
-    f.select :relative_time, mirrored_time_options([1.year, 5.days, 1.day, ['Overriden Label', 3.hours], 1.hour], :median_time => Time.now, :before_suffix => ' before', :after_suffix => ' after')
+    f.select :relative_time, mirrored_time_options([1.year, 5.days, 1.day, ['Overriden Label', 3.hours], 1.hour], :median_time => Time.zone.now, :before_suffix => ' before', :after_suffix => ' after')
 
 produces:
 
@@ -187,7 +187,7 @@ Example 7: Timestamp Example
 
 The helper can also set the value of the options to a specified timestamp representation rather than a railative string or seconds.  Simply supply the **:value\_timestamp\_format** option with a `to_s` format.  The same formats (**:db**, **:rfc822**, **:short**, **:long**, custom formats) available to the label are also available for the value portion of the option.  Please note that the array of time intervals supplied to the helper must NOT be string representations to use this functionality.  Also, of course, a median time object must be supplied.
 
-    f.select :relative_seconds, mirrored_time_options([1.year, 5.days, 1.day, ['Overriden Label', 3.hours], 1.hour], :before_suffix => ' before', :after_suffix => ' after', :value_timestamp_format => :db, :median_time => Time.now)
+    f.select :relative_seconds, mirrored_time_options([1.year, 5.days, 1.day, ['Overriden Label', 3.hours], 1.hour], :before_suffix => ' before', :after_suffix => ' after', :value_timestamp_format => :db, :median_time => Time.zone.now)
 
 produces:
 
@@ -214,7 +214,7 @@ You can achieve almost any relative timestamp dropdown by specifying additional 
 Examples
   
     :median_time => @task.due_at
-    :median_time => Time.now
+    :median_time => Time.zone.now
 
 #### Custom Values ####
 

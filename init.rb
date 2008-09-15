@@ -1,5 +1,2 @@
-require 'bilson/railative/time'
-
-#ActiveSupport::CoreExtensions::Time::Calculations.send(:include, Bilson::Railative::Time)
-
+require 'bilson/railative/time_with_zone'
 ActionController::Base.helper(Bilson::Railative::Helpers)
